@@ -1,5 +1,6 @@
 import csv
 from pyModbusTCP.client import ModbusClient
+from concurrent.futures import ThreadPoolExecutor
 import sys
 import json
 import requests
@@ -9,7 +10,7 @@ with open('ips.csv', 'r') as file:
     reader = csv.reader(file)
     ips = [row[0] for row in reader]
 # Leer los dispositivos Modbus TCP
-url = "https://jsononline.net/es/json-checker"
+# url = "https://jsononline.net/es/json-checker"
 while True:
     for ip in ips:
         client = ModbusClient(host=ip, port=502, timeout=1)
