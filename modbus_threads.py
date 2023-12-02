@@ -6,6 +6,7 @@ import csv
 with open('ips.csv', 'r') as file:
     reader = csv.reader(file)
     ips = [row[0] for row in reader]
+
 # Función para leer los registros de un PLC
 def read_plc(plc_ip):
     # Conexión al PLC
@@ -13,7 +14,7 @@ def read_plc(plc_ip):
     # Lectura de los registros
    
     result = client.read_holding_registers(0, 1)
-
+    
     # Impresión de los registros
     print(f"{plc_ip}: {result.registers}")
 
